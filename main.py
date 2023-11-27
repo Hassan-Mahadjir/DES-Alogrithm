@@ -16,5 +16,5 @@ key_bits = converToBinary(key)
 # print(plain_text_bits)
 # # print()
 
-# block = permutation(plain_text_bits, initialPermutationMatrix)
+block = permutation(plain_text_bits, initialPermutationMatrix)
 # print(block)
