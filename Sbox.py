@@ -76,6 +76,8 @@ def Sbox_substitution(bit_array):
 
         result += [int(bit) for bit in bit_value]
 
+    return result
+
 
 def binValue(val, bitSize):
     """Function to return the binary value as a string of given size."""

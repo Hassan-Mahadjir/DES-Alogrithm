@@ -24,11 +24,14 @@ def DES(text, key, isEncrypt):
     keys = generateKeys(key)
 
     plain_text_to_8byte_blocks = nSplit(text, 8)
+    print(plain_text_to_8byte_blocks)
     result = []
 
     for block in plain_text_to_8byte_blocks:
 
         block = converToBinary(block)
+        print(len(block))
+
         block = permutation(block, initialPermutationMatrix)
         left_block, right_block = nSplit(block, 32)
 
@@ -86,7 +89,7 @@ def XOR(list1, list2):
 
 def DESEncryption(text, key, extension):
     if extension == True:
-        addExtension(text)
+        text = addExtension(text)
 
     ciphertext = DES(text, key, True)
 
