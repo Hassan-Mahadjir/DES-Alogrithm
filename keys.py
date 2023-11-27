@@ -1,5 +1,5 @@
-from convertTobits import converToBinary
-from permutation import permutation, initialPermutationMatrix, keyPermutationMatrix1, keyPermutationMatrix2
+from convert import converToBinary
+from permutation import permutation, keyPermutationMatrix1, keyPermutationMatrix2
 from divide_to_bytes import nSplit
 
 SHIFT = [1, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 1]
@@ -14,8 +14,8 @@ def generateKeys(key):
     left_block, right_block = nSplit(key, 28)
 
     for i in range(16):
-        leftBlock, rightBlock = leftShift(leftBlock, rightBlock, SHIFT[i])
-        temp = leftBlock + rightBlock
+        left_block, right_block = leftShift(left_block, right_block, SHIFT[i])
+        temp = left_block + right_block
         # Permutation on shifted key to get next key
         keys.append(permutation(temp, keyPermutationMatrix2))
 

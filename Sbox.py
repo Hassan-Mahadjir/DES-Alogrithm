@@ -58,4 +58,33 @@ SboxesArray = [
     ]
 ]
 
+
 def Sbox_substitution(bit_array):
+
+    blocks = nSplit(bit_array, 6)
+    result = []
+
+    for i in range(len(blocks)):
+        block = blocks[i]
+
+        row = int(str(block[0]) + str(block[5]), 2)
+        column = int(''.join([str(x) for x in block[1:-1]]), 2)
+
+        sbox_value = SboxesArray[i][row][column]
+
+        bit_value = binValue(sbox_value, 4)
+
+        result += [int(bit) for bit in bit_value]
+
+
+def binValue(val, bitSize):
+    """Function to return the binary value as a string of given size."""
+
+    binVal = bin(val)[2:] if isinstance(val, int) else bin(ord(val))[2:]
+
+    # Appending with required number of zeros in front
+    while len(binVal) < bitSize:
+        binVal = "0" + binVal
+
+    # Returning binary value
+    return binVal

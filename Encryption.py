@@ -1,13 +1,8 @@
-from convertTobits import converToBinary
+from convert import converToBinary, converToString
 from permutation import permutation, initialPermutationMatrix, eachRoundPermutationMatrix, finalPermutationMatrix
 from divide_to_bytes import nSplit
 from keys import generateKeys
 from Sbox import Sbox_substitution
-
-
-plain_text = "helloooow"
-key = "hassan"
-isExtensionRequired = (len(plain_text) % 8 != 0)
 
 
 def addExtension(text):
@@ -22,7 +17,7 @@ def addExtension(text):
     return text
 
 
-def DES(text, key, extension, isEncrypt):
+def DES(text, key, isEncrypt):
     isDecrypt = not isEncrypt
 
     #  need to generateKeys
@@ -60,6 +55,10 @@ def DES(text, key, extension, isEncrypt):
 
         result += permutation(right_block + left_block, finalPermutationMatrix)
 
+    finalResult = converToString(result)
+
+    return finalResult
+
 
 expandMatrix = [
     32, 1, 2, 3, 4, 5,
@@ -85,8 +84,10 @@ def XOR(list1, list2):
     return [element1 ^ element2 for element1, element2 in zip(list1, list2)]
 
 
-def DESEncryption(text, key, extesion):
-    if isExtensionRequired == True:
+def DESEncryption(text, key, extension):
+    if extension == True:
         addExtension(text)
 
-    ciphertext = DES(text, key, extesion, True)
+    ciphertext = DES(text, key, True)
+
+    return ciphertext
