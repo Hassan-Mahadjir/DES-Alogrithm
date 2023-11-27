@@ -1,0 +1,48 @@
+from convertTobits import converToBinary
+from permutation import permutation, initialPermutationMatrix
+from divide_to_bytes import nSplit
+
+
+plain_text = "helloooow"
+key = "hassan"
+isExtensionRequired = (len(plain_text) % 8 != 0)
+
+
+def addExtension(text):
+    """Function to add padding according to PKCS5 standard."""
+
+    # Determining padding length
+    paddingLength = 8 - (len(text) % 8)
+    # Adding paddingLength number of chr(paddingLength) to text
+    text += chr(paddingLength) * paddingLength
+
+    # Returning text
+    return text
+
+
+def DES(text, key, extension, isEncrypt):
+    isDecrypt = not isEncrypt
+
+    #  need to generateKeys
+
+    plain_text_to_8byte_blocks = nSplit(text, 8)
+    result = []
+
+    for block in plain_text_to_8byte_blocks:
+
+        block = converToBinary(block)
+        block = permutation(block, initialPermutationMatrix)
+        left_block, right_block = nSplit(block, 32)
+
+        temp = None
+
+        for i in range(16):
+            
+
+
+
+def DESEncryption(text, key, extesion):
+    if isExtensionRequired == True:
+        addExtension(text)
+
+    ciphertext = DES(text, key, extesion, True)
