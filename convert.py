@@ -20,6 +20,7 @@ def converToString(array):
             bitsList += str(bit)
         # Appending byte in string form to stringBytesList
         stringBytesList.append(''.join(bitsList))
+        print(stringBytesList)
 
     # Converting each stringByte to char (base 2 int conversion first)
     # and then concatenating

@@ -24,13 +24,12 @@ def DES(text, key, isEncrypt):
     keys = generateKeys(key)
 
     plain_text_to_8byte_blocks = nSplit(text, 8)
-    print(plain_text_to_8byte_blocks)
+
     result = []
 
     for block in plain_text_to_8byte_blocks:
 
         block = converToBinary(block)
-        print(len(block))
 
         block = permutation(block, initialPermutationMatrix)
         left_block, right_block = nSplit(block, 32)
