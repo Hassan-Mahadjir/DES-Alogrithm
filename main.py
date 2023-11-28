@@ -2,8 +2,8 @@ from Encryption import DESEncryption
 from decryption import DESDecryption
 
 text = input('Enter text: ')
-key = input("Enter a key (ony 8 bytes)")
-condition = input("select Encryption(e) or Decryption(d)")
+key = input("Enter a key (ony 8 bytes): ")
+condition = input("select Encryption(e) or Decryption(d): ")
 while len(key) != 8:
     key = input("Enter a key (ony 8 bytes)")
 isExtensionRequired = (len(text) % 8 != 0)
