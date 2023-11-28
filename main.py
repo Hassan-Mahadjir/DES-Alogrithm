@@ -1,9 +1,10 @@
 from Encryption import DESEncryption
 from decryption import DESDecryption
 
-plain_text = "abcdefgh"
-key = "12345678"
-
+plain_text = input('Enter text: ')
+key = input("Enter a key (ony 8 bytes)")
+while len(key) != 8:
+    key = input("Enter a key (ony 8 bytes)")
 isExtensionRequired = (len(plain_text) % 8 != 0)
 
 result_of_encryption = DESEncryption(
