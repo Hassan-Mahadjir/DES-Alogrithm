@@ -30,7 +30,6 @@ def DES(text, key, isEncrypt):
     for block in plain_text_to_8byte_blocks:
 
         block = converToBinary(block)
-
         block = permutation(block, initialPermutationMatrix)
         left_block, right_block = nSplit(block, 32)
 
